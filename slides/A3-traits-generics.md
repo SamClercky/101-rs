@@ -804,6 +804,24 @@ pub struct ContainsRef<'r, T> {
 layout: default
 ---
 
+# `'static` lifetime
+Guarantees to remain valid for the entire duration of the application
+
+Examples of `'static` lifetime values: 
+```rust
+// With a literal
+let s: &'static str = "This is a str literal";
+// By leaking memory
+let b = Box::new(42);
+let static_ref: &'static i32 = Box::leak(b);
+// By using a global static 
+static MY_STATIC: &'static u32 = &42;
+```
+
+---
+layout: default
+---
+
 # Lifetime elision
 &nbsp;
 
